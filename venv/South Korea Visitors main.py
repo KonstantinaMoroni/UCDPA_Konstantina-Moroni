@@ -15,10 +15,13 @@ unique_country_names=S_Korea["nation"].unique()
 print(unique_country_names)
 print(S_Korea["nation"].nunique()) #how many unique countries do I have
 print(type(unique_country_names)) #numpy array
-dict_countries={"nation":unique_country_names,"Continent":["ASIA","N.AMERICA","ASIA","ASIA","EUROPE","ASIA","EUROPE","ASIA","ASIA","ASIA","AFRICA","N.AMERICA","EUROPE","ASIA","ASIA","EUROPE","EUROPE","ASIA","ASIA","AFRICA","ASIA","OCEANIA","EUROPE","OCEANIA","N/S AMERICA","EUROPE","EUROPE","EUROPE","EUROPE","EUROPE","EUROPE","ASIA","EUROPE","S.AMERICA","EUROPE","S.AMERICA","ASIA","EUROPE","ASIA","ASIA","EUROPE","EUROPE","EUROPE","EUROPE","EUROPE","EUROPE","ASIA","EUROPE","ASIA","EUROPE","EUROPE","AFRICA","ASIA","ASIA","ASIA","OCEANIA","ASIA","ASIA","STATELESS","ASIA"]}
+dict_countries={"nation":unique_country_names,"Continent":["ASIA","N.AMERICA","ASIA","ASIA","EUROPE/ASIA (Russia)","ASIA","EUROPE","ASIA","ASIA","ASIA","ASIA","N.AMERICA","EUROPE","ASIA","ASIA","EUROPE","EUROPE","ASIA","ASIA","AFRICA","ASIA","ASIA","OCEANIA","EUROPE","OCEANIA","N/S AMERICA","EUROPE","EUROPE","EUROPE","EUROPE","EUROPE","ASIA","EUROPE","S.AMERICA","EUROPE","S.AMERICA","ASIA","EUROPE","ASIA","ASIA","EUROPE","EUROPE","EUROPE","EUROPE","EUROPE","EUROPE","ASIA","EUROPE","ASIA","EUROPE","EUROPE","AFRICA","ASIA","ASIA","ASIA","OCEANIA","ASIA","ASIA","STATELESS","ASIA"]}
 print(dict_countries)
 df_countries=pd.DataFrame(dict_countries)
 print(df_countries)
+df_countries["nation"]=df_countries["nation"].replace(["Austrailia"],"Australia") #spotted typo in Australia ("Austrailia") so I will fix it
+print(df_countries.iloc[22])
+print(df_countries) #fixed
 new_S_Korea=S_Korea.merge(df_countries,on="nation",how="inner")
 print(new_S_Korea.shape) #to see new dataframes shape, we see that we have same no of rows and columns so all ok
 new_S_Korea=new_S_Korea.round({"Growth %":2,"Share %":2}) #rounding new_s_korea growth and share (cleaning new dataframe)

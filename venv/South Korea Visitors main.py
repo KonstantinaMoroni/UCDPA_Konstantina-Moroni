@@ -9,7 +9,7 @@ print(S_Korea.info()) #to see data types that columns contain
 print(S_Korea.isna().sum()) #to check missing values, none found
 S_Korea.drop_duplicates(inplace=True) #to drop rows that are completely identical
 print(S_Korea.shape) #no duplicates found/dropped
-S_Korea.sort_values(["date","visitor"],ascending=(False,False),inplace=True)
+S_Korea.sort_values(["date","visitor"],ascending=(True,False),inplace=True)
 S_Korea.rename(columns={"growth":"Growth %","share":"Share %"},inplace=True)
 #I will create a new dictionary (dict_countries) with the unique country names (from S_Korea) and continent where they belong and will then convert it to a dataframe
 unique_country_names=S_Korea["nation"].unique()

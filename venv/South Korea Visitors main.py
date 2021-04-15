@@ -67,12 +67,12 @@ plt.title("S_Korea:No of visitors")
 plt.xticks(rotation=90)
 plt.show()
 #2
-fig,ax=plt.subplots(figsize=(10,10))
+fig,ax=plt.subplots(figsize=(8,8))
 sns.barplot(data=new_S_Korea,y="continent",x="visitor") #to see which continent most visitors come from
 plt.title("S_Korea:Origin of visitors")
 plt.show()
 #3
-fig,ax=plt.subplots(figsize=(10,10))
+fig,ax=plt.subplots(figsize=(8,8))
 sns.lineplot(data=df_china,x="date",y="visitor") #to see how china's visitors developed over the years
 plt.xticks(rotation=90)
 plt.title("China:Visitors")
@@ -80,7 +80,7 @@ plt.show()
 #4 to see how the different age groups of S.Korea's visitors developed over the years
 new_S_Korea_ages=new_S_Korea[["age0-20","age21-30","age31-40","age41-50","age51-60","age61"]].sort_values("date")
 print(new_S_Korea_ages.head())
-fig,ax=plt.subplots(figsize=(10,10))
+fig,ax=plt.subplots(figsize=(8,8))
 sns.lineplot(data=new_S_Korea_ages,x="date",y="age0-20",label="age0-20yrs")
 sns.lineplot(data=new_S_Korea_ages,x="date",y="age21-30",label="age21-30yrs")
 sns.lineplot(data=new_S_Korea_ages,x="date",y="age31-40",label="age31-40yrs")
@@ -92,7 +92,7 @@ plt.ylabel("age_group")
 plt.xticks(rotation=90)
 plt.show()
 #5 to see how S.Korean tourism growth has developed over the years
-fig,ax=plt.subplots(figsize=(10,10))
+fig,ax=plt.subplots(figsize=(8,8))
 sns.lineplot(data=new_S_Korea,x="date",y="growth %")
 plt.title("S_Korea visitors (tourism) :Growth")
 plt.xticks(rotation=90)
@@ -111,8 +111,6 @@ plt.show()
 from bokeh.plotting import ColumnDataSource, figure
 from bokeh.io import output_file,show
 from bokeh.models import HoverTool
-from bokeh.models import CategoricalColorMapper
-from bokeh.models import Range1d
 from bokeh.models import NumeralTickFormatter
 source=ColumnDataSource(df_china)
 plot=figure(x_axis_label="No of visitors", y_axis_label="Share %",tools="hover",title="S_Korea visitors from China:Visitors/Share %")

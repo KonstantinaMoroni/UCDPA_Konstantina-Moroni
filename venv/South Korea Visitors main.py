@@ -16,7 +16,7 @@ unique_country_names=S_Korea["nation"].unique()
 print(unique_country_names)
 print(S_Korea["nation"].nunique()) #how many unique countries do I have
 print(type(unique_country_names)) #numpy array
-dict_countries={"nation":unique_country_names,"Continent":["ASIA","N.AMERICA","ASIA","ASIA","EUROPE/ASIA (Russia)","ASIA","EUROPE","ASIA","ASIA","ASIA","ASIA","N.AMERICA","EUROPE","ASIA","ASIA","EUROPE","EUROPE","ASIA","ASIA","AFRICA","ASIA","ASIA","OCEANIA","EUROPE","OCEANIA","N/S AMERICA","EUROPE","EUROPE","EUROPE","EUROPE","EUROPE","ASIA","EUROPE","S.AMERICA","EUROPE","S.AMERICA","ASIA","EUROPE","ASIA","ASIA","EUROPE","EUROPE","EUROPE","EUROPE","EUROPE","EUROPE","ASIA","EUROPE","ASIA","EUROPE","EUROPE","AFRICA","ASIA","ASIA","ASIA","OCEANIA","ASIA","ASIA","STATELESS","ASIA"]}
+dict_countries={"nation":unique_country_names,"Continent":["ASIA","ASIA","ASIA","N.AMERICA","ASIA","ASIA","ASIA","ASIA/EUROPE (Russia)","ASIA","ASIA","ASIA","ASIA","OCEANIA","N.AMERICA","EUROPE","ASIA","ASIA","ASIA","EUROPE","ASIA","EUROPE","ASIA","ASIA","ASIA","EUROPE","EUROPE","OCEANIA","ASIA","AFRICA","ASIA","EUROPE","N/S AMERICA","EUROPE","S.AMERICA","ASIA","ASIA","S.AMERICA","EUROPE","EUROPE","ASIA","ASIA","ASIA","AFRICA","EUROPE","EUROPE","EUROPE","ASIA","EUROPE","EUROPE","EUROPE","EUROPE","EUROPE","EUROPE","OCEANIA","EUROPE","EUROPE","EUROPE","EUROPE","ASIA","STATELESS"]}
 print(dict_countries)
 df_countries=pd.DataFrame(dict_countries) #new dataframe with country names and continents
 print(df_countries)
@@ -55,6 +55,7 @@ for index,row in df_china.iterrows(): #to see which month the 21-30 yrs olds fro
     print(index,row["age21-30"])
 #Reusable code
 def df_orig(path):
+ df1=pd.read_csv(path)
  df1.drop_dulicates(inplace=True) #dropping duplicates
  df1.fillna("Unknown",inplace=True) #replacing Nas with "Unknown"
  df1.rename(columns=str.lower,inplace=True) #changing column names to lower case
@@ -101,6 +102,7 @@ plt.show()
 top_countries=s_frame_transposed.loc[["China","Japan","Taiwan","USA"]]
 print(top_countries)
 sns.barplot(data=top_countries,x=top_countries.index,y="visitor")
+plt.ylabel("Visitors in millions")
 plt.title("S_Korea visitors: Top 4 Countries")
 plt.show()
 #7 S.Korea's biggest "client" ie China - visualise relationship between the number of visitors coming from China yo S.Korea and China's share in the S.Korean tourism market
